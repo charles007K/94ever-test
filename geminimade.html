@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玖涌文化94ever</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: white;
+            overflow-x: hidden;
+        }
+
+        /* Brand Color Variables */
+        :root {
+            --primary-cyan: #4ECDC4;
+            --primary-pink: #E91E63;
+            --dark-blue: #2c3e50;
+            --light-blue: #3498db;
+            --bg-cream: #FDF9F2;
+            --gradient-primary: linear-gradient(135deg, #4ECDC4 0%, #E91E63 100%);
+            --gradient-business: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            color: var(--dark-blue);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-pink);
+            border-radius: 2px;
+        }
+
+        /* Header */
+        header {
+            background: var(--dark-blue);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 150px 20px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px; /* Adjust for fixed header */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-pink);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--primary-cyan);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section (Redesigned) */
+        .about-section {
+            padding: 100px 0;
+            background: var(--bg-cream);
+            color: var(--dark-blue);
+        }
+
+        .about-section .about-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+            font-size: 1.15em;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-cyan);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid var(--primary-pink);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+
+        .timeline-item-content {
+            padding: 20px 30px;
+            background: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-item-content h3 {
+            font-size: 1.8em;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .timeline-item-content p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .timeline-year {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-pink);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-item-content::before {
+            content: "";
+            position: absolute;
+            top: 22px;
+            right: -10px;
+            border-width: 10px 0 10px 10px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-item-content::before {
+            content: "";
+            position: absolute;
+            top: 22px;
+            left: -10px;
+            border-width: 10px 10px 10px 0;
+            border-style: solid;
+            border-color: transparent white transparent transparent;
+        }
+
+
+        /* Values Section (Original, modified slightly for visual consistency) */
+        .values {
+            padding: 100px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .values .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .values .value-item {
+            background: var(--bg-cream);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .values .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .values .value-item i {
+            font-size: 3em;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+        }
+
+        .values .value-item h3 {
+            font-size: 1.5em;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .values .value-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .values .value-number {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: var(--primary-cyan);
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Services Section (Example - not part of the request, but for completeness) */
+        .services {
+            padding: 100px 0;
+            background: var(--primary-cyan);
+            color: white;
+            text-align: center;
+        }
+
+        .services .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .services .service-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .services .service-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .services .service-item i {
+            font-size: 3em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .services .service-item h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .services .service-item p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer .social-links a {
+            color: white;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-cyan);
+        }
+        .icon-image {
+            height: 6%;
+            width: 6%;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            nav ul {
+                display: none; /* Simple mobile nav - consider a hamburger menu for production */
+            }
+
+            .section-heading {
+                font-size: 2em;
+            }
+
+            .timeline::before {
+                left: 18px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 10px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 10px;
+            }
+
+            .timeline-item-content::before {
+                border: medium solid white;
+                border-width: 10px 10px 10px 0 !important;
+                border-color: transparent white transparent transparent !important;
+                left: -10px !important;
+                right: auto !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo"><img src="Photo/company_icon.png" alt="icon"class="icon-image"> 玖涌文化 | 94EVER</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#values">核心价值观</a></li>
+                    <li><a href="#services">服务</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>创造卓越文化体验</h1>
+                <p>玖涌文化94EVER，致力于融合传统与现代，打造独具匠心的文化产品与服务。</p>
+                <a href="#about" class="btn">了解更多</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-heading">关于玖涌文化</h2>
+                <p class="about-intro">
+                    玖涌文化94EVER自成立以来，始终秉持对文化事业的热爱与执着，不断探索与创新，致力于为社会提供高质量的文化产品和服务。我们深信，文化是连接人心的桥梁，是传承历史、开创未来的重要力量。
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2014</span>
+                            <h3>初创之年</h3>
+                            <p>金投赏国际广告节<br>
+                            新天地新天地侦探艺术王国纪念展<br>
+                            青浦奥特莱斯四周年店庆<br>
+                            助行金融长白山峰会<br>
+                            原创儿童文学《奥列伞》时间课系列活动</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2015</span>
+                            <h3>夯实之年</h3>
+                            <p>浦东新区残联年度文艺汇演<br>
+                            上海市残联“爱心助残”系列活动<br>
+                            滴水湖春浪音乐节<br>
+                            世博园冰雪王国系列活动<br>
+                            2015《印象金桥》艺术季系列活动<br>
+                            浦东新区残联“五个十佳”颁奖典礼<br>
+                            浦东新区公安“最佳拍档”评比活动<br>
+                            长宁区“蓝天下的治安”慈善募捐开幕式<br>
+                            中国航天工业集团“申航通”启动仪式</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2016</span>
+                            <h3>萌芽之年</h3>
+                            <p>腾讯18周年嘉年华 · 上海站<br>
+                            上海市残联“爱心助残”系列活动<br>
+                            2016上海桃花节<br>
+                            滴水湖澳大利亚生活节<br>
+                            上海图书节“书香二号线”系列活动<br>
+                            2016 TOP DIGITAL广告节<br>
+                            浦东新区残联迎7·1文艺汇演<br>
+                            浦东新区唐镇“四优三提高”颁奖活动<br>
+                            农发集团科创中心揭牌仪式<br>
+                            上海市青年中心文化布置系列设计<br></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2017</span>
+                            <h3>茁壮之年</h3>
+                            <p>2017浦东新区政协中秋联谊会<br>
+                            浦东新区慈善公益联合捐<br>
+                            浦东电视台《魔都行囊》系列设计<br>
+                            上海时尚周末S1 & S2<br>
+                            慧心谷绿奢度假村系列设计<br>
+                            王港小学校园文化系列设计<br>
+                            第二十八届《金桥之春》书画展系列活动<br>
+                            沪东社区文化艺术节闭幕式<br>
+                            浦东分局三林分区指挥所健康跑活动<br>
+                            2017 TOP DIGITAL广告节<br>
+                            慧心谷《寻找最美慧管家》系列活动</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2018</span>
+                            <h3>扎根之年</h3>
+                            <p>中国白酒文化艺术馆展陈设计<br>
+                            上海设计周新天地分会场<br>
+                            中国公安大学无人机安全论坛<br>
+                            2018浦东新区政协中秋联谊会<br>
+                            上海时尚周末S3 & S4<br>
+                            浦东新区慈善公益联合捐<br>
+                            2017年度浦东公安30大精品案例评选<br>
+                            第二十九届《金桥之春》书画展系列活动<br>
+                            2018 TOP DIGITAL广告节</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2019</span>
+                            <h3>迎风之年</h3>
+                            <p>上海购物节 · 闵行分会场<br>
+                            MXGP估计越野摩托车赛 · 永康站<br>
+                            2019浦东新区政协中秋联谊会<br>
+                            上海时尚周末 S5 & S6<br>
+                            浦东新区慈善公益联合捐<br>
+                            2018年度浦东公安30大精品案例评选<br>
+                            梅赛德斯奔驰 · 设计银河系特展<br>
+                            第三十届《金桥之春》书画展系列活动<br>
+                            第一届全球文旅住宿大产业博览会<br>
+                            湖州慧心谷绿奢度假村开业典礼</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2020</span>
+                            <h3>挑战之年</h3>
+                            <p>全球文旅住宿产业博览会<br>
+                            2019年度浦东公安30大精品案例评选<br>
+                            OISHI上好佳PITSHOP健康加油站路演<br>
+                            第三十一届《金桥之春》画册设计制作<br>
+                            浦东新区统战部春节文艺汇演<br>
+                            上海市公安局防范电信诈骗宣传日活动<br>
+                            蒲公英幼儿园亲子活动<br>
+                            第二届全球文旅住宿大产业博览会</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2021</span>
+                            <h3>逆势之年</h3>
+                            <p>2021人工智能大会 · 健康论坛<br>
+                            2nd“傅雷杯”全国家书作品大赛颁奖典礼<br>
+                            盛泽时装周“东方杯”服装设计大赛启动仪式<br>
+                            上海市公安局浦东分局指挥中心启用仪式<br>
+                            2020年度浦东公安30大精品案例评选<br>
+                            第三十二届《金桥之春》画册设计制作<br>
+                            傅雷故居成果展<br>西湖音乐节 · 外星人电解质水展台</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2022</span>
+                            <h3>稳守之年</h3>
+                            <p>盛泽时装周开幕式<br>
+                            2022人工智能大会 · 浦东发布会<br>
+                            汇海上 · 两岸电竞文化节<br>
+                            浦东新区老干部局党支部+签约仪式<br>
+                            第三十三届《金桥之春》画册设计制作</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2023</span>
+                            <h3>复苏之年</h3>
+                            <p>浦东新区保安服务协会表彰大会<br>
+                            建科铝工院铝结构应用高峰论坛<br>
+                            发现黄埔--中欧生命健康研讨会<br>
+                            上海银行虹口支行开业仪式<br>
+                            浦东唐城9球中国公开赛开幕式<br>
+                            漕河泾集团地产项目推介会<br>
+                            厦门时装周鼓浪屿联合活动<br>
+                            长沙国金龙年跨年美陈项目</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-content">
+                            <span class="timeline-year">2024</span>
+                            <h3>展望之年</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="values" class="values">
+            <div class="container">
+                <h2 class="section-heading">我们的核心价值观</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>创新驱动</h3>
+                        <p>不断突破传统，探索新思想、新模式、新体验。</p>
+                        <span class="value-number">Stytle
+                        </span>
+                    </div>
+                        <div class="value-item">
+                        <i class="fa-brands fa-golang"></i>
+                        <h3>锐意进取</h3>
+                        <p>努力在行业中做出品牌价值是。</p>
+                        <span class="value-number">Branding
+                        </span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fa-regular fa-user"></i>
+                        <h3>以人为本</h3>
+                        <p>时刻关注用户需求，尊重个体价值，共同成长。</p>
+                        <span class="value-number">Focus</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-heart"></i>
+                        <h3>服务优先</h3>
+                        <p>强力售前，温馨售中，持续售后。</p>
+                        <span class="value-number">Service</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-handshake"></i>
+                        <h3>合作共赢</h3>
+                        <p>开放心态，携手伙伴，共创辉煌。</p>
+                        <span class="value-number">Cowork</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-shield-alt"></i>   
+                        <h3>品质至上</h3>
+                        <p>严谨细致，精益求精，铸就卓越。</p>
+                        <span class="value-number">Quailty</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-heading">我们的服务</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-palette"></i>
+                        <h3>文化创意产品开发</h3>
+                        <p>从概念到落地，打造独具匠心的文化衍生品。</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>文化活动策划与执行</h3>
+                        <p>专业团队为您打造沉浸式文化体验活动。</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-code"></i>
+                        <h3>数字文化内容制作</h3>
+                        <p>融合前沿科技，提供创新的数字文化解决方案。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 玖涌文化94EVER. All Rights Reserved.</p>
+            <p>联系我们：info@94ever.com | 电话：+86 123 4567 890</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Number animation function (from original code)
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.value-number');
+            numbers.forEach(number => {
+                const finalNumber = number.textContent;
+                const numericValue = parseFloat(finalNumber.replace(/[^0-9.]/g, '')); // Handle floats if needed
+                const suffix = finalNumber.replace(/[0-9.]/g, '');
+
+                if (!isNaN(numericValue)) { // Check if it's a valid number
+                    let currentNumber = 0;
+                    const duration = 2000; // Animation duration in ms
+                    const start = performance.now();
+
+                    const updateNumber = (timestamp) => {
+                        const progress = (timestamp - start) / duration;
+                        if (progress < 1) {
+                            currentNumber = numericValue * progress;
+                            number.textContent = Math.ceil(currentNumber) + suffix; // Round up for integer display
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            number.textContent = finalNumber; // Ensure final exact value
+                        }
+                    };
+                    requestAnimationFrame(updateNumber);
+                }
+            });
+        }
+
+        // Intersection Observer for number animation (from original code)
+        const numbersObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    numbersObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const valuesSection = document.querySelector('.values');
+        if (valuesSection) {
+            numbersObserver.observe(valuesSection);
+        }
+
+        // Optional: Animate timeline items on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 }); // Trigger when 30% of the item is visible
+
+        timelineItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            timelineObserver.observe(item);
+        });
+    </script>
+</body>
+</html>
